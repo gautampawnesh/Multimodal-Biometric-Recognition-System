@@ -8,6 +8,14 @@ from config_loader import get_combined_args
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
+def preprocessing_init(
+        ml_config,
+        env,
+        output_dir,
+        input_dirs
+):
+    return
+
 def preprocess(raw_dir, output_dir, split_ratio=0.8):
     logger.info(f"Starting preprocessing from {raw_dir} with {split_ratio} split.")
     os.makedirs(output_dir, exist_ok=True)

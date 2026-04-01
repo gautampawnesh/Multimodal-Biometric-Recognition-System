@@ -105,6 +105,14 @@ def train(args):
         torch.save(model.state_dict(), args.model_path)
         logger.info(f"Model checkpoint saved to {args.model_path}")
 
+def training_init(
+        ml_config,
+        env,
+        output_dir,
+        input_dirs
+):
+    return
+
 if __name__ == "__main__":
     args = get_combined_args("Training Step")
     

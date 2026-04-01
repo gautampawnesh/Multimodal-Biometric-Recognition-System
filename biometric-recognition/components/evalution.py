@@ -72,6 +72,14 @@ def evaluate(args):
     logger.info(f"Avg Latency per Identity: {avg_latency:.2f} ms")
     logger.info("-------------------------")
 
+def evaluation_init(
+        ml_config,
+        env,
+        output_dir,
+        input_dirs
+):
+    return
+
 if __name__ == "__main__":
     args = get_combined_args("Evaluation Step")
     evaluate(args)

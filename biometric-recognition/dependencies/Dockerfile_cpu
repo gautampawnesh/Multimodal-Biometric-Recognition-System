@@ -1,7 +1,8 @@
 # Use Azure ML OpenMPI base image
-FROM mcr.microsoft.com/azureml/openmpi:latest
+FROM mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04
 
 WORKDIR /app
+# Root user should be changed after installation
 USER root
 
 # Install additional system dependencies

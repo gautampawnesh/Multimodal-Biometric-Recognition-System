@@ -1,0 +1,29 @@
+name: biometric_pipeline_env
+channels:
+  - defaults
+  - pytorch
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip:
+    # Azure ML Core for pipeline communication
+    - azureml-core
+    - azureml-dataset-runtime
+    - azureml-pipeline-steps
+    # Data Processing & Config
+    - numpy
+    - pandas
+    - pillow
+    - pyyaml
+    # Machine Learning Framework
+    - torch
+    - torchvision
+    - torchaudio
+    # Utilities
+    - click
+    - matplotlib
+    - tqdm
+    # ml dashboard
+    - mlflow
+    - azureml-mlflow
+# Todo: Add specific version for each package for consistency in future.

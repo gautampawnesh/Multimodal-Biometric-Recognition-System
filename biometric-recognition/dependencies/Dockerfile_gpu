@@ -1,0 +1,26 @@
+# Use Azure ML OpenMPI Ubuntu base image with CUDA + cuDNN
+FROM mcr.microsoft.com/azureml/openmpi4.1.0-cuda11.8-cudnn8-ubuntu20.04
+
+# Set the working directory
+WORKDIR /app
+# Root user should be changed after installation
+USER root
+
+# Install dependencies for OpenCV and image processing
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    libgl1 \
+    libglib2.0-0 \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install specific Python libraries needed for the biometric scripts
+# Note: PyTorch is already included and optimized in the base image
+RUN pip install --no-cache-dir \
+    opencv-python-headless \
+    pillow \
+    scikit-learn \
+    tqdm
+
+# Copy your project files
+COPY . .

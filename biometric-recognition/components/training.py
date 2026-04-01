@@ -6,7 +6,9 @@ import os
 from torch.utils.data import DataLoader, Dataset
 from torchvision import models, transforms
 from PIL import Image
-from tqdm import tqdm  # New Import
+from tqdm import tqdm 
+from config_loader import get_combined_args
+
 
 # Enhanced Logging Setup
 logging.basicConfig(
@@ -104,12 +106,6 @@ def train(args):
         logger.info(f"Model checkpoint saved to {args.model_path}")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--metadata", type=str, default="/data/processed/train_metadata.pth")
-    parser.add_argument("--model_path", type=str, default="/data/model/biometric_v1.pth")
-    parser.add_argument("--epochs", type=int, default=10)
-    parser.add_argument("--batch_size", type=int, default=8)
-    parser.add_argument("--lr", type=float, default=0.001)
-    args = parser.parse_args()
+    args = get_combined_args("Training Step")
     
     train(args)

@@ -3,6 +3,7 @@ import torch
 import logging
 import argparse
 import random
+from config_loader import get_combined_args
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -58,9 +59,5 @@ def preprocess(raw_dir, output_dir, split_ratio=0.8):
     logger.info(f"-> Validation Pairs: {len(val_dataset)}")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--raw_dir", type=str, default="/data/raw")
-    parser.add_argument("--output_dir", type=str, default="/data/processed")
-    parser.add_argument("--split", type=float, default=0.8)
-    args = parser.parse_args()
+    args = get_combined_args("Preprocessing Step")
     preprocess(args.raw_dir, args.output_dir, args.split)

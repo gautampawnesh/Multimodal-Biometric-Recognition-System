@@ -7,6 +7,8 @@ import time
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 from components.training import MultiModalModel, BiometricDataset
+from config_loader import get_combined_args
+
 
 # Setup Logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -71,13 +73,5 @@ def evaluate(args):
     logger.info("-------------------------")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Biometric System Evaluation")
-    # Defaulting to val_metadata.pth now
-    parser.add_argument("--metadata", type=str, default="/data/processed/val_metadata.pth", 
-                        help="Path to validation metadata file")
-    parser.add_argument("--model_path", type=str, default="/data/model/biometric_v1.pth", 
-                        help="Path to trained .pth model")
-    parser.add_argument("--batch_size", type=int, default=16)
-    
-    args = parser.parse_args()
+    args = get_combined_args("Evaluation Step")
     evaluate(args)
